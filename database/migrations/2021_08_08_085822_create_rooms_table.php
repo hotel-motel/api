@@ -15,6 +15,8 @@ class CreateRoomsTable extends Migration
     {
         Schema::create('rooms', function (Blueprint $table) {
             $table->id();
+            $table->unsignedMediumInteger('number');
+            $table->unsignedBigInteger('price');
             $table->unsignedSmallInteger('max_capacity');
             $table->unsignedBigInteger('hotel_id');
             $table->timestamps();
