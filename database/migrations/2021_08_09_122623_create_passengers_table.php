@@ -1,11 +1,11 @@
 <?php
 
-use App\Models\Hotel;
+use App\Models\Trip;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRoomsTable extends Migration
+class CreatePassengersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,15 +14,15 @@ class CreateRoomsTable extends Migration
      */
     public function up()
     {
-        Schema::create('rooms', function (Blueprint $table) {
+        Schema::create('passengers', function (Blueprint $table) {
             $table->id();
-            $table->unsignedMediumInteger('number');
-            $table->unsignedBigInteger('price');
-            $table->unsignedSmallInteger('max_capacity');
-            $table->foreignIdFor(Hotel::class)
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('national_code');
+            $table->foreignIdFor(Trip::class)
                 ->constrained()
                 ->cascadeOnUpdate()
-                ->cascadeOnUpdate();
+                ->cascadeOnDelete();
             $table->timestamps();
         });
     }
@@ -34,6 +34,6 @@ class CreateRoomsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rooms');
+        Schema::dropIfExists('passengers');
     }
 }

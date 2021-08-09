@@ -13,4 +13,9 @@ class Room extends Model
     {
         return $this->belongsTo(Hotel::class);
     }
+
+    public function trips()
+    {
+        return $this->hasMany(Trip::class);
+    }
 }

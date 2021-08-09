@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\City;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -18,13 +19,11 @@ class CreateHotelsTable extends Migration
             $table->string('name');
             $table->string('address');
             $table->unsignedTinyInteger('star');
-            $table->unsignedBigInteger('city_id');
+            $table->foreignIdFor(City::class)
+                ->constrained()
+                ->cascadeOnUpdate()
+                ->cascadeOnDelete();
             $table->timestamps();
-            $table->foreign('city_id')
-                ->on('cities')
-                ->references('id')
-                ->onDelete('Cascade')
-                ->onUpdate('Cascade');
         });
     }
 
