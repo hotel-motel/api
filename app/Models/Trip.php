@@ -23,4 +23,9 @@ class Trip extends Model
     {
         return $this->belongsTo(User::class, 'id', 'creator_id');
     }
+
+    public function payment()
+    {
+        return $this->hasOne(Payment::class);
+    }
 }
