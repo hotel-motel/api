@@ -26,7 +26,8 @@ class RoomFactory extends Factory
             'number'=>$this->faker->numberBetween(1, 10000),
             'price'=>$this->faker->numberBetween(30000, 2000000),
             'max_capacity'=>$this->faker->numberBetween(1, 10),
-            'hotel_id'=>$this->faker->numberBetween(1, Hotel::count())
+            'hotel_id'=>$this->faker->numberBetween(1, Hotel::count()),
+            'floor'=>$this->faker->numberBetween(1, 20)
         ];
     }
 }

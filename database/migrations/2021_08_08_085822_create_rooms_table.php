@@ -18,6 +18,7 @@ class CreateRoomsTable extends Migration
             $table->id();
             $table->unsignedMediumInteger('number');
             $table->unsignedBigInteger('price');
+            $table->smallInteger('floor');
             $table->unsignedSmallInteger('max_capacity');
             $table->foreignIdFor(Hotel::class)
                 ->constrained()
