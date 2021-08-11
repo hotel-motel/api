@@ -21,6 +21,7 @@ class HotelSeeder extends Seeder
                 'address'=>'سعادت آباد، میدان بهرود، خیابان 33، شماره 21',
                 'star'=>5,
                 'city_id'=>30,
+                'image'=>'https://cdn.alibaba.ir/inh/domestic-hotel/image_be14e9c4-42d8-426e-8e9a-e2b060f49662.jpg',
                 'created_at'=>now(),
                 'updated_at'=>now()
             ],
@@ -31,6 +32,7 @@ class HotelSeeder extends Seeder
                 'star'=>4,
                 'city_id'=>6,
                 'created_at'=>now(),
+                'image'=>'https://cdn.alibaba.ir/inh/domestic-hotel/image_be14e9c4-42d8-426e-8e9a-e2b060f49662.jpg',
                 'updated_at'=>now()
             ],
             [
@@ -40,6 +42,7 @@ class HotelSeeder extends Seeder
                 'star'=>5,
                 'city_id'=>30,
                 'created_at'=>now(),
+                'image'=>'https://cdn.alibaba.ir/inh/domestic-hotel/image_be14e9c4-42d8-426e-8e9a-e2b060f49662.jpg',
                 'updated_at'=>now()
             ],
             [
@@ -49,6 +52,7 @@ class HotelSeeder extends Seeder
                 'star'=>5,
                 'city_id'=>9,
                 'created_at'=>now(),
+                'image'=>'https://cdn.alibaba.ir/inh/domestic-hotel/image_be14e9c4-42d8-426e-8e9a-e2b060f49662.jpg',
                 'updated_at'=>now()
             ],
             [
@@ -58,6 +62,7 @@ class HotelSeeder extends Seeder
                 'star'=>5,
                 'city_id'=>3,
                 'created_at'=>now(),
+                'image'=>'https://cdn.alibaba.ir/inh/domestic-hotel/image_be14e9c4-42d8-426e-8e9a-e2b060f49662.jpg',
                 'updated_at'=>now()
             ]
         ]);
