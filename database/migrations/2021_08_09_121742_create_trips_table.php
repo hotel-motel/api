@@ -16,8 +16,8 @@ class CreateTripsTable extends Migration
     {
         Schema::create('trips', function (Blueprint $table) {
             $table->id();
-            $table->date('from');
-            $table->date('to');
+            $table->date('start');
+            $table->date('end');
             $table->foreignIdFor(Room::class)
                 ->constrained()
                 ->cascadeOnUpdate()

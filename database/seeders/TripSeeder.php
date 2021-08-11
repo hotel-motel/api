@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Trip;
 use Illuminate\Database\Seeder;
 
 class TripSeeder extends Seeder
@@ -13,6 +14,8 @@ class TripSeeder extends Seeder
      */
     public function run()
     {
-        //TODO
+        Trip::factory()
+            ->count(3)
+            ->create();
     }
 }

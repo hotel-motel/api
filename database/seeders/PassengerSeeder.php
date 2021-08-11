@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\passenger;
 use Illuminate\Database\Seeder;
 
 class PassengerSeeder extends Seeder
@@ -13,6 +14,8 @@ class PassengerSeeder extends Seeder
      */
     public function run()
     {
-        // TODO
+        passenger::factory()
+            ->count(18)
+            ->create();
     }
 }
