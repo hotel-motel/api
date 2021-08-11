@@ -37,19 +37,22 @@
                                 Number: {{ $room->number }}
                             </div>
                             <div>
-                                Max capacity: {{ $room->max_capacity }}
+                                Capacity: {{ $room->max_capacity }}
                             </div>
                             <div>
                                 Floor : {{ $room->floor }}
                             </div>
                             <div>
-                                Price each day: {{ $room->price }}
+                                Price : {{ $room->price }}
                                 <span class="badge badge-warning">
                                     Tooman
                                 </span>
+                                <span class="h6">
+                                    (per night)
+                                </span>
                             </div>
                             <div>
-                                <a class="btn btn-primary" href="#">
+                                <a class="btn btn-primary" href="{{ route('rooms.show', ['room'=> $room->id]) }}">
                                     Reserve
                                 </a>
                             </div>

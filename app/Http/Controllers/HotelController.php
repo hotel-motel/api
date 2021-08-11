@@ -18,8 +18,7 @@ class HotelController extends Controller
             'rooms'=>function($query){
                 $query->orderBy('floor');
             },
-            'city',
-            'rooms.trips'
+            'city'
         ]);
         return view('hotel.show', compact('hotel'));
     }
