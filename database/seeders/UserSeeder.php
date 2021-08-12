@@ -26,7 +26,7 @@ class UserSeeder extends Seeder
                 'id'=>1,
                 'created_at'=>now(),
                 'updated_at'=>now(),
-                'name'=>'امید رضا',
+                'name'=>'Omid reza',
                 'email_verified_at'=>now(),
                 'email'=>'omid77.orh@gmail.com',
                 'password'=> Hash::make('password'),
@@ -34,7 +34,7 @@ class UserSeeder extends Seeder
             ],
             [
                 'id'=>2,
-                'name'=>'علی رضا',
+                'name'=>'Ali reza',
                 'created_at'=>now(),
                 'updated_at'=>now(),
                 'email_verified_at'=>null,
@@ -44,7 +44,7 @@ class UserSeeder extends Seeder
             ],
             [
                 'id'=>3,
-                'name'=>'محمد حسین',
+                'name'=>'Mohammad ali',
                 'created_at'=>now(),
                 'updated_at'=>now(),
                 'email_verified_at'=>now(),
