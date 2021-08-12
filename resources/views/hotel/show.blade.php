@@ -27,6 +27,34 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="grid gap-2">
+                <span class="h4">
+                    Choose your trip time :
+                </span>
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                    <div class="p-6 bg-white border-b border-gray-200">
+                        <form action="#" method="get" class="flex justify-around">
+                            <div>
+                                <span class="h5">
+                                    Arrive :
+                                </span>
+                                <input type="date" name="start" value="{{ request()->get('start') }}" min="{{ now()->toDateString() }}" required>
+                            </div>
+                            <div>
+                                <span class="h5">
+                                    Leave
+                                </span>
+                                <input type="date" name="end" value="{{ request()->get('end') }}" min="{{ now()->toDateString() }}" required>
+                            </div>
+                            <input type="submit" value="search" class="btn btn-primary">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="grid gap-2">
                 <span class="h3">
                     Rooms List :
                 </span>
@@ -52,9 +80,15 @@
                                 </span>
                             </div>
                             <div>
-                                <a class="btn btn-primary" href="{{ route('rooms.show', ['room'=> $room->id]) }}">
-                                    Reserve
-                                </a>
+                                @if(in_array($room->id, $reserved))
+                                    <span class="badge badge-danger">
+                                        Reserved for this period
+                                    </span>
+                                @else
+                                    <a class="btn btn-primary" href="{{ route('rooms.show', ['room'=> $room->id]) }}" dis>
+                                        Reserve
+                                    </a>
+                                @endif
                             </div>
                         </div>
                     </div>
