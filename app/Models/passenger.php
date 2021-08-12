@@ -9,6 +9,8 @@ class passenger extends Model
 {
     use HasFactory;
 
+    protected $guarded=[];
+
     public function trip()
     {
         return $this->belongsTo(Trip::class);

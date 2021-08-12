@@ -3841,6 +3841,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -3850,9 +3861,24 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     addPassengerField: function addPassengerField() {
       this.passengers.push({
-        'first_name': '',
-        'last_name': '',
-        'national_code': ''
+        'first_name': 's',
+        'last_name': 's',
+        'national_code': '12'
+      });
+    },
+    removePassenger: function removePassenger(index) {
+      this.passengers.splice(index, 1);
+    },
+    checkForm: function checkForm() {
+      var urlParams = new URLSearchParams(window.location.search);
+      axios.post(window.location.href.split('?')[0] + '/trips', {
+        'passengers': this.passengers,
+        'start': urlParams.get('start'),
+        'end': urlParams.get('end')
+      }).then(function (response) {
+        return alert('redirect to payment');
+      })["catch"](function (error) {
+        return alert('we have error on send request');
       });
     }
   }
@@ -21424,30 +21450,43 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
+    _c(
+      "div",
+      { staticClass: "max-w-7xl mx-auto sm:px-6 lg:px-8 flex justify-end" },
+      [
+        _c(
+          "Button",
+          {
+            staticClass: "btn btn-primary",
+            on: { click: _vm.addPassengerField }
+          },
+          [_vm._v("\n                Add new passenger\n            ")]
+        )
+      ],
+      1
+    ),
+    _vm._v(" "),
     _c("div", { staticClass: "py-12" }, [
-      _c(
-        "div",
-        { staticClass: "max-w-7xl mx-auto sm:px-6 lg:px-8 grid gap-2" },
-        _vm._l(_vm.passengers, function(passenger) {
-          return _c(
-            "div",
-            { staticClass: "bg-white overflow-hidden shadow-sm sm:rounded-lg" },
-            [
-              _c(
-                "div",
-                { staticClass: "p-6 bg-white border-b border-gray-200" },
-                [
-                  _c(
-                    "form",
-                    {
-                      staticClass: "flex justify-around",
-                      attrs: { action: "#", method: "get" }
-                    },
-                    [
+      _c("div", [
+        _c(
+          "div",
+          { staticClass: "max-w-7xl mx-auto sm:px-6 lg:px-8 grid gap-2" },
+          _vm._l(_vm.passengers, function(passenger, index) {
+            return _c(
+              "div",
+              {
+                staticClass: "bg-white overflow-hidden shadow-sm sm:rounded-lg"
+              },
+              [
+                _c(
+                  "div",
+                  { staticClass: "p-6 bg-white border-b border-gray-200" },
+                  [
+                    _c("div", { staticClass: "flex justify-around" }, [
                       _c("div", [
                         _c("span", { staticClass: "h5" }, [
                           _vm._v(
-                            "\n\t                                    First name :\n\t                                "
+                            "\n                                            First name :\n                                        "
                           )
                         ]),
                         _vm._v(" "),
@@ -21463,7 +21502,7 @@ var render = function() {
                           staticClass: "form-control",
                           attrs: {
                             type: "text",
-                            name: "first_name",
+                            name: "first_name[]",
                             required: ""
                           },
                           domProps: { value: passenger.first_name },
@@ -21485,7 +21524,7 @@ var render = function() {
                       _c("div", [
                         _c("span", { staticClass: "h5" }, [
                           _vm._v(
-                            "\n\t                                    Last name :\n\t                                "
+                            "\n                                            Last name :\n                                        "
                           )
                         ]),
                         _vm._v(" "),
@@ -21501,7 +21540,7 @@ var render = function() {
                           staticClass: "form-control",
                           attrs: {
                             type: "text",
-                            name: "last_name",
+                            name: "last_name[]",
                             required: ""
                           },
                           domProps: { value: passenger.last_name },
@@ -21523,7 +21562,7 @@ var render = function() {
                       _c("div", [
                         _c("span", { staticClass: "h5" }, [
                           _vm._v(
-                            "\n\t                                    National code :\n\t                                "
+                            "\n                                            National code :\n                                        "
                           )
                         ]),
                         _vm._v(" "),
@@ -21539,7 +21578,7 @@ var render = function() {
                           staticClass: "form-control",
                           attrs: {
                             type: "text",
-                            name: "national_code",
+                            name: "national_code[]",
                             required: ""
                           },
                           domProps: { value: passenger.national_code },
@@ -21556,31 +21595,69 @@ var render = function() {
                             }
                           }
                         })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-danger",
+                            on: {
+                              click: function($event) {
+                                return _vm.removePassenger(index)
+                              }
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                            Remove\n                                        "
+                            )
+                          ]
+                        )
                       ])
-                    ]
-                  )
-                ]
-              )
-            ]
-          )
-        }),
-        0
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "max-w-7xl mx-auto sm:px-6 lg:px-8 grid gap-2" },
-        [
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-primary",
-              on: { click: _vm.addPassengerField }
-            },
-            [_vm._v("\n\t\t\t\t\t\tAdd new passenger\n\t\t\t\t\t")]
-          )
-        ]
-      )
+                    ])
+                  ]
+                )
+              ]
+            )
+          }),
+          0
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.passengers.length > 0,
+                expression: "passengers.length>0"
+              }
+            ],
+            staticClass: "max-w-7xl mx-auto sm:px-6 lg:px-8 grid gap-2"
+          },
+          [
+            _c(
+              "Button",
+              {
+                staticClass: "btn btn-success",
+                on: {
+                  click: function($event) {
+                    return _vm.checkForm()
+                  }
+                }
+              },
+              [
+                _vm._v(
+                  "\n                        Continue\n                    "
+                )
+              ]
+            )
+          ],
+          1
+        )
+      ])
     ])
   ])
 }
