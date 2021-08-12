@@ -6,7 +6,7 @@ use App\Models\Room;
 
 class RoomController extends Controller
 {
-    public function show(Room $room){
+    public function reserve(Room $room){
         $room->load('trips', 'hotel');
         return view('room.show', compact('room'));
     }
