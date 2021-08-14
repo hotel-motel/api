@@ -21,16 +21,8 @@ class HotelController extends Controller
         $reserved=[];
         if ($request->has('start')){
             $hotel->load('rooms');
-            $tripDays=CarbonPeriod::create($request->start, $request->end);
-            $reserved=$hotel->rooms->filter(function ($room) use($request, $tripDays) {
-                $tripsInDate=$room->trips->filter(function ($trip) use ($request, $tripDays){
-                    foreach ($tripDays as $day){
-                        if ($day>=$trip->start && $day<=$trip->end){
-                            return $trip;
-                        }
-                    }
-                });
-                if ($tripsInDate->count()>0){
+            $reserved=$hotel->rooms->filter(function ($room) use($request) {
+                if( ! $room->isEmpty($request->start, $request->end)){
                     return $room;
                 }
             })->pluck('id')->toArray();

@@ -89,7 +89,7 @@
 		},
 		methods:{
 			addPassengerField(){
-				this.passengers.push({'first_name':'Omid rz', 'last_name':'HO', 'national_code':'987653210'})
+				this.passengers.push({'first_name':'', 'last_name':'', 'national_code':''})
 			},
             removePassenger(index){
 			    this.passengers.splice(index, 1)
