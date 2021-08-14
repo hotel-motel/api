@@ -16,8 +16,10 @@
                     </span>
                     <span class="h5">
                         Price : {{ $room->price }}
-                        Tooman
-                        (per night)
+                        <span class="badge badge-warning">
+                            Tooman
+                        </span>
+                        (per day)
                     </span>
                     <span class="h4">
                         <div class="badge badge-primary">
@@ -25,9 +27,10 @@
                         </div>
                     </span>
                     <div class="h5">
-                        <span class="font-bold">
-                            Name : {{ $room->hotel->name }}
-                        </span>
+                        Name :
+                        <a class="font-bold text-gray-900 no-underline" href="{{ route('hotels.show', ['hotel'=> $room->hotel->name]) }}">
+                            {{ $room->hotel->name }}
+                        </a>
                         <span class="badge badge-warning">
                             {{ $room->hotel->star }}
                             <i class='bx bxs-star'></i>
