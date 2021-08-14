@@ -21,7 +21,7 @@ class TripController extends Controller
             'passengers.*.first_name'=>'required',
             'passengers.*.national_code'=>'required|size:10'
         ])->validate();
-        if ($request->passenger->count()>$room->max_capacity){
+        if (sizeof($request->passengers)>$room->max_capacity){
             return abort(403, 'passenger count is more than room capacity');
         }
         $tripDays=CarbonPeriod::create($request->start, $request->end);
