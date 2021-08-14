@@ -27,10 +27,9 @@ class PaymentController extends Controller
             $receipt = PaymentGateway::amount($payment->amount)->transactionId($request->Authority)->verify();
             $payment->update(['reference_id'=>$receipt->getReferenceId()]);
             //TODO: increase hotel account credit
-            return 'success';
-            //TODO: show some view
+            return view('trip.payment-verify');
         } catch (InvalidPaymentException $exception) {
-            return response($exception->getMessage(), 422);
+            return view('trip.payment-verify', ['error'=> $exception->getMessage()]);
         }
     }
 }
