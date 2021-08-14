@@ -18,6 +18,7 @@ class CreateTripsTable extends Migration
             $table->id();
             $table->date('start');
             $table->date('end');
+            $table->unsignedBigInteger('amount');
             $table->foreignIdFor(Room::class)
                 ->constrained()
                 ->cascadeOnUpdate()

@@ -35,7 +35,8 @@ class HotelController extends Controller
                 }
             })->pluck('id')->toArray();
         }
-        $trip_duration=Carbon::parse(request()->input('end'))->diffInDays(request()->input('start'));
+        // Note: we add 1 to $trip_duration because of start date should reserved and start day ignored in diffInDays function
+        $trip_duration=Carbon::parse(request()->input('end'))->diffInDays(request()->input('start'))+1;
         return view('hotel.show', ['hotel'=>$hotel, 'reserved'=>$reserved, 'trip_duration'=>$trip_duration]);
     }
 }

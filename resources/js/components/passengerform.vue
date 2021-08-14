@@ -69,7 +69,7 @@
                     'start':urlParams.get('start'),
                     'end':urlParams.get('end')
                 })
-                .then(response=> alert('redirect to payment'))
+                .then(response=> window.location.href='/trips/'+response.data+'/pay')
                 .catch(error=> alert('we have error on send request'));
             }
 		}

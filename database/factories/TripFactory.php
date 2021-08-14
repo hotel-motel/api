@@ -27,7 +27,8 @@ class TripFactory extends Factory
             'start'=>$this->faker->date,
             'end'=>$this->faker->date,
             'room_id'=>$this->faker->numberBetween(1, Room::count()),
-            'creator_id'=>$this->faker->numberBetween(1, User::count())
+            'creator_id'=>$this->faker->numberBetween(1, User::count()),
+            'amount'=>$this->faker->numberBetween(1, 9999999)
         ];
     }
 }

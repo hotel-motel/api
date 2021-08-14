@@ -14,5 +14,7 @@ Route::group(['middleware'=>'auth'],function (){
     Route::post('rooms/{room}/trips', [TripController::class, 'store']);
     Route::resource('hotels', HotelController::class)->only(['show']);
     Route::get('rooms/{room}', [RoomController::class, 'reserve'])->name('rooms.reserve');
+    Route::get('trips/{trip}/pay', [TripController::class, 'pay']);
 });
 
+Route::get('trips/pay/verify', [TripController::class, 'verify_pay']);
