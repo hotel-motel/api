@@ -3,13 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Room;
-use App\Models\Trip;
-use App\Models\Payment;
 use Carbon\CarbonPeriod;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Shetabit\Payment\Facade\Payment as PaymentGateway;
-use Shetabit\Multipay\Exceptions\InvalidPaymentException;
 
 class TripController extends Controller
 {
@@ -45,29 +41,5 @@ class TripController extends Controller
         ]);
         $trip->passengers()->createMany($request->passengers);
         return $trip->id;
-    }
-
-    public function pay(Trip $trip)
-    {
-        //TODO: check payment not paid before
-        $payment=new Payment([
-            'trip_id'=>$trip->id,
-            'amount'=>$trip->amount
-        ]);
-        return $payment->redirectToGateway();
-    }
-
-    public function verify_pay(Request $request)
-    {
-        try {
-            $payment=Payment::where(['transaction_id'=> $request->Authority, 'reference_id'=>null])->firstOrFail();
-            $receipt = PaymentGateway::amount($payment->amount)->transactionId($request->Authority)->verify();
-            $payment->update(['reference_id'=>$receipt->getReferenceId()]);
-            //TODO: increase hotel account credit
-            return 'success';
-            //TODO: show some view
-        } catch (InvalidPaymentException $exception) {
-            return response($exception->getMessage(), 422);
-        }
     }
 }
