@@ -6,7 +6,6 @@ use App\Models\Room;
 use App\Models\Trip;
 use App\Models\Payment;
 use Carbon\CarbonPeriod;
-use App\Models\passenger;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Shetabit\Payment\Facade\Payment as PaymentGateway;
@@ -25,7 +24,7 @@ class TripController extends Controller
             'passengers.*.national_code'=>'required|size:10'
         ])->validate();
         if (sizeof($request->passengers)>$room->max_capacity){
-            return abort(403, 'passenger count is more than room capacity');
+            return response('Passenger count is more than room capacity', 422);
         }
         $tripDays=CarbonPeriod::create($request->start, $request->end);
         $tripsInDate=$room->trips->filter(function ($trip) use ($request, $tripDays){
@@ -36,23 +35,15 @@ class TripController extends Controller
             }
         });
         if ($tripsInDate->count()>0){
-            return abort(403, 'reserved for this period');
+            return response('reserved for this period', 422);
         }
-        $trip=Trip::create([
+        $trip=auth()->user()->trips()->create([
             'start'=>$request->start,
             'end'=>$request->end,
             'room_id'=>$room->id,
-            'amount'=>$room->price*$tripDays->count(),
-            'creator_id'=>auth()->id()
+            'amount'=>$room->price*$tripDays->count()
         ]);
-        foreach ($request->passengers as $passenger){
-            passenger::create([
-                'first_name'=>$passenger['first_name'],
-                'last_name'=>$passenger['last_name'],
-                'national_code'=>$passenger['national_code'],
-                'trip_id'=>$trip->id
-            ]);
-        }
+        $trip->passengers()->createMany($request->passengers);
         return $trip->id;
     }
 
