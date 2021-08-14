@@ -24,7 +24,20 @@
             </div>
         </div>
     </x-slot>
-    {{-- TODO: shwo error of search rooms   --}}
+    {{--    show error of search --}}
+    @if ($errors->any())
+        <div class="py-12">
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+        </div>
+    @endif
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="grid gap-2">

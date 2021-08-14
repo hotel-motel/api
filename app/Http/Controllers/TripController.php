@@ -21,7 +21,7 @@ class TripController extends Controller
             'passengers.*.national_code'=>'required|size:10'
         ])->validate();
         if (sizeof($request->passengers)>$room->max_capacity){
-            return response('Passenger count is more than room capacity', 422);
+            return response(['errors'=>'Passenger count is more than room capacity'], 422);
         }
         $tripDays=CarbonPeriod::create($request->start, $request->end);
         $tripsInDate=$room->trips->filter(function ($trip) use ($request, $tripDays){
@@ -32,7 +32,7 @@ class TripController extends Controller
             }
         });
         if ($tripsInDate->count()>0){
-            return response('reserved for this period', 422);
+            return response(['errors'=>'Reserved for this period'], 422);
         }
         $trip=auth()->user()->trips()->create([
             'start'=>$request->start,

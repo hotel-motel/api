@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\SearchRoomRequest;
-use App\Models\Hotel;
 use Carbon\Carbon;
-use Carbon\CarbonPeriod;
+use App\Models\Hotel;
+use App\Http\Requests\SearchRoomRequest;
 
 class HotelController extends Controller
 {

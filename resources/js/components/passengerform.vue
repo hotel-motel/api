@@ -1,5 +1,10 @@
 <template>
 	<div>
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8" v-if="typeof errors=='string'">
+            <div class="alert alert-danger">
+                {{ errors }}
+            </div>
+        </div>
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 flex justify-end">
             <Button class="btn btn-primary" @click="addPassengerField">
                 <i class='bx bx-plus'></i>
