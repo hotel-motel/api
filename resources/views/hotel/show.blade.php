@@ -89,9 +89,9 @@
                                 </div>
                                 <div>
                                     @if(in_array($room->id, $reserved))
-                                        <span class="badge badge-danger">
-                                        Reserved for this period
-                                    </span>
+                                        <button class="btn btn-danger" disabled>
+                                            Reserved
+                                        </button>
                                     @else
                                         <form method="get" action="{{ route('rooms.reserve', ['room'=> $room->id]) }}">
                                             <input type="hidden" name="start" value="{{ request()->input('start') }}">
