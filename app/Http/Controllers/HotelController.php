@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SearchRoomRequest;
 use App\Models\Hotel;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
-use Illuminate\Http\Request;
 
 class HotelController extends Controller
 {
@@ -15,11 +15,11 @@ class HotelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request, Hotel $hotel)
+    public function show(SearchRoomRequest $request, Hotel $hotel)
     {
         $hotel->load('city');
         $reserved=[];
-        if ($request->has('start') && $request->has('end')){
+        if ($request->has('start')){
             $hotel->load('rooms');
             $tripDays=CarbonPeriod::create($request->start, $request->end);
             $reserved=$hotel->rooms->filter(function ($room) use($request, $tripDays) {
