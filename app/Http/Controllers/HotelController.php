@@ -9,12 +9,6 @@ use Carbon\CarbonPeriod;
 
 class HotelController extends Controller
 {
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show(SearchRoomRequest $request, Hotel $hotel)
     {
         $hotel->load('city');

@@ -12,7 +12,9 @@ class PaymentController extends Controller
 {
     public function pay(Trip $trip)
     {
-        //TODO: check payment not paid before
+        if ($trip->payment()->exists()){
+            abort(403, 'paid');
+        }
         $payment=new Payment([
             'trip_id'=>$trip->id,
             'amount'=>$trip->amount
