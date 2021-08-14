@@ -5,6 +5,7 @@
                 Add new passenger
             </Button>
         </div>
+        <!--   TODO: check inputs must be not empty and must be same thing we need     -->
 		<div class="py-12">
             <div>
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 grid gap-2">
@@ -56,7 +57,7 @@
 		},
 		methods:{
 			addPassengerField(){
-				this.passengers.push({'first_name':'s', 'last_name':'s', 'national_code':'12'})
+				this.passengers.push({'first_name':'', 'last_name':'', 'national_code':''})
 			},
             removePassenger(index){
 			    this.passengers.splice(index, 1)
