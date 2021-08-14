@@ -11,6 +11,7 @@ class TripController extends Controller
 {
     public function store(Room $room, Request $request)
     {
+        //TODO : customize error message
         Validator::make($request->all(), [
             'start'=>'required|date',
             'passengers'=>'required|array',

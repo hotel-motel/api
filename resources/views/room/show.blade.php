@@ -53,12 +53,14 @@
                         <form action="#" method="get" class="flex justify-around">
                             <div>
                                 <span class="h5">
+                                    <i class='bx bx-down-arrow-alt'></i>
                                     Arrive :
                                 </span>
                                 {{ request()->input('start') }}
                             </div>
                             <div>
                                 <span class="h5">
+                                    <i class='bx bx-up-arrow-alt' ></i>
                                     Leave :
                                 </span>
                                 {{ request()->input('end') }}

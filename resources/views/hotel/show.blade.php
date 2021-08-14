@@ -29,24 +29,30 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="grid gap-2">
                 <span class="h4">
-                    Choose your trip time :
+                    <i class='bx bxs-calendar' ></i>
+                    Choose your trip times :
                 </span>
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 bg-white border-b border-gray-200">
                         <form action="#" method="get" class="flex justify-around">
                             <div>
                                 <span class="h5">
+                                    <i class='bx bx-down-arrow-alt'></i>
                                     Arrive :
                                 </span>
                                 <input type="date" name="start" value="{{ request()->get('start') }}" min="{{ now()->toDateString() }}" required>
                             </div>
                             <div>
                                 <span class="h5">
+                                    <i class='bx bx-up-arrow-alt' ></i>
                                     Leave :
                                 </span>
                                 <input type="date" name="end" value="{{ request()->get('end') }}" min="{{ now()->toDateString() }}" required>
                             </div>
-                            <input type="submit" value="search" class="btn btn-primary">
+
+                            <button type="submit" class="btn btn-primary">
+                                <i class='bx bx-search'></i>
+                            </button>
                         </form>
                     </div>
                 </div>
