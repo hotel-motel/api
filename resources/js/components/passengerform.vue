@@ -6,9 +6,12 @@
             </div>
         </div>
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 flex justify-end">
-            <Button class="btn btn-primary" @click="addPassengerField">
+            <Button class="btn btn-primary" @click="addPassengerField" v-if="passengers.length<capacity">
                 <i class='bx bx-plus'></i>
                 new passenger
+            </Button>
+            <Button class="btn btn-danger" v-else disabled>
+                Room capacity is full
             </Button>
         </div>
         <!--   TODO: check inputs must be not empty and must be same thing we need     -->
@@ -86,6 +89,7 @@
 </template>
 <script>
 	export default{
+	    props:['capacity'],
 		data(){
 			return {
 				passengers:[],
@@ -95,6 +99,7 @@
 		methods:{
 			addPassengerField(){
 				this.passengers.push({'first_name':'', 'last_name':'', 'national_code':''})
+                console.log(this.passengers.length<this.capacity);
 			},
             removePassenger(index){
 			    this.passengers.splice(index, 1)

@@ -73,5 +73,5 @@
                 </div>
         </div>
     </div>
-    <passenger-form></passenger-form>
+    <passenger-form :capacity="{{ $room->max_capacity }}"></passenger-form>
 </x-app-layout>
