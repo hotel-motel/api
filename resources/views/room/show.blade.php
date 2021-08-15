@@ -28,7 +28,7 @@
                     </span>
                     <div class="h5">
                         Name :
-                        <a class="font-bold text-gray-900 no-underline" href="{{ route('hotels.show', ['hotel'=> $room->hotel->name]) }}">
+                        <a class="font-bold text-gray-900 no-underline" href="{{ route('hotels.show', ['hotel'=> $room->hotel->id]) }}">
                             {{ $room->hotel->name }}
                         </a>
                         <span class="badge badge-warning">

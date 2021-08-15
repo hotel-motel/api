@@ -13,7 +13,8 @@ Route::view('/', 'welcome');
 Route::group(['middleware'=>'auth'],function (){
     Route::view('/dashboard', 'dashboard')->name('dashboard');
     Route::post('rooms/{room}/trips', [TripController::class, 'store']);
-    Route::resource('hotels', HotelController::class)->only(['show']);
+    Route::get('hotels/{hotel}', [HotelController::class, 'show'])->name('hotels.show');
+    Route::post('hotels/{hotel}', [HotelController::class, 'get']);
     Route::get('rooms/{room}', [RoomController::class, 'reserve'])->name('rooms.reserve');
     Route::get('trips/{trip}/pay', [PaymentController::class, 'pay']);
 });
