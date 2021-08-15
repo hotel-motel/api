@@ -8,7 +8,7 @@ use App\Http\Controllers\PaymentController;
 
 require __DIR__.'/auth.php';
 
-Route::view('/', 'welcome');
+Route::view('/', 'home');
 
 Route::group(['middleware'=>'auth'],function (){
     Route::view('/dashboard', 'dashboard')->name('dashboard');
