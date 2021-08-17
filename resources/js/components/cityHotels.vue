@@ -2,8 +2,8 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="row">
-                    <div class="col-4" v-for="hotel in hotels">
+                <div class="row justify-around m-3">
+                    <div class="col-4 mb-3" v-for="hotel in hotels">
                         <hotel :hotel="hotel"></hotel>
                     </div>
                 </div>
