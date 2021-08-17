@@ -6,9 +6,7 @@
                     <h4 class="font-bold">
                         Reserve Hotel anywhere you want
                     </h4>
-                    <span>
-                        You can explore in hotels in iran cities and reserve hotel easily,
-                    </span>
+                    <span>You can explore in hotels in iran cities and reserve hotel easily,</span>
                     <div class="row absolute bottom-0 right-3">
                         <a href="/cities" class="btn btn-primary">
                             Explore
@@ -21,5 +19,5 @@
             </div>
         </div>
     </x-slot>
-    <popular-cities></popular-cities>
+    <popular-cities style="margin-top: 3%;"></popular-cities>
 </x-app-layout>
