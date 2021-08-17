@@ -1,11 +1,11 @@
 <template>
     <div>
-        <a class="text-gray-900" :href="'/cities/'+name">
-            <div class="imageContainer rounded" v-bind:style="{ 'background-image': 'url(' + image + ')'}" @mouseenter="mouseEntered()" @mouseleave="mouseLeft()">
+        <a class="text-gray-900" :href="'/hotels/'+hotel.id">
+            <div class="imageContainer rounded" v-bind:style="{ 'background-image': 'url(' + hotel.image + ')'}" @mouseenter="mouseEntered()" @mouseleave="mouseLeft()">
                 <div class="content fs-5 text-center">
-				<button class="btn btn-dark" v-bind:style="{display:mouseOnItem}">
-					{{ name }}
-				</button>
+                    <button class="btn btn-dark" v-bind:style="{display:mouseOnItem}">
+                        {{ hotel.name }}
+                    </button>
                 </div>
             </div>
         </a>
@@ -13,11 +13,11 @@
 </template>
 <script>
 export default{
-    props:['name', 'image'],
+    props:['hotel'],
     data(){
-      return{
-          mouseOnItem:'none'
-      }
+        return{
+            mouseOnItem:'none'
+        }
     },
     methods:{
         mouseEntered(){
@@ -26,7 +26,7 @@ export default{
         mouseLeft(){
             this.mouseOnItem='none'
         }
-}
+    }
 }
 </script>
 <style scoped>

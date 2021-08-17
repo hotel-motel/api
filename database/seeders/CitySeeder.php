@@ -8,37 +8,130 @@ use Illuminate\Database\Seeder;
 class CitySeeder extends Seeder
 {
     private $cities=[
-        "Tabriz",
-        "Birjand",
-        "Mashhad",
-        "Bojnord",
-        "Ahvaz",
-        "Zanjan",
-        "Semnan",
-        "Zahedan",
-        "Shiraz",
-        "Qazvin",
-        "Qom",
-        "Urmia",
-        "Saqqez",
-        "Kerman",
-        "Kermanshah",
-        "Yasuj",
-        "Gorgan",
-        "Rasht",
-        "Khorramabad",
-        "Sari",
-        "Arak",
-        "Bandar Abbas",
-        "Ardabil",
-        "Hamedan",
-        "Yazd",
-        "Isfahan",
-        "Karaj",
-        "Ilam",
-        "Bushehr",
-        "Tehran",
-        "Shahr-e Kord"
+        [
+            "name"=>"Tabriz",
+            "image"=>"https://unsplash.com/photos/6jBKmH4klU8/download?force=true&w=640"
+        ],
+        [
+            "name"=>"Birjand",
+            "image"=>"https://unsplash.com/photos/ctBTbNO2h3E/download?force=true&w=640"
+        ],
+        [
+            "name"=>"Mashhad",
+            "image"=>"https://unsplash.com/photos/jDgZrAPV_cI/download?force=true&w=640"
+        ],
+        [
+            "name"=>"Bojnord",
+            "image"=>"https://unsplash.com/photos/62t_kKa2YlA/download?force=true&w=640"
+        ],
+        [
+            "name"=>"Ahvaz",
+            "image"=>"https://unsplash.com/photos/9mHKPsDqjaI/download?force=true&w=640"
+        ],
+        [
+            "name"=>"Zanjan",
+            "image"=>"https://unsplash.com/photos/FIHqvAqUcGw/download?force=true&w=640"
+        ],
+        [
+            "name"=>"Semnan",
+            "image"=>"https://unsplash.com/photos/CDu0x1Aiils/download?force=true&w=640"
+        ],
+        [
+            "name"=>"Zahedan",
+            "image"=>"https://unsplash.com/photos/UXCFgUL4FKY/download?force=true&w=640"
+        ],
+        [
+            "name"=>"Shiraz",
+            "image"=>"https://unsplash.com/photos/kmjH-aZnzYU/download?force=true&w=640"
+        ],
+        [
+            "name"=>"Qazvin",
+            "image"=>"https://unsplash.com/photos/lHFPQbWCaME/download?force=true&w=640"
+        ],
+        [
+            "name"=>"Qom",
+            "image"=>"https://unsplash.com/photos/ENFNEe7v1Ps/download?force=true&w=640"
+        ],
+        [
+            "name"=>"Urmia",
+            "image"=>"https://unsplash.com/photos/CDIzBKYtoGQ/download?force=true&w=640"
+        ],
+        [
+            "name"=>"Saqqez",
+            "image"=>"https://unsplash.com/photos/JG1xsJx145U/download?force=true&w=640"
+        ],
+        [
+            "name"=>"Kerman",
+            "image"=>"https://unsplash.com/photos/9IOOVDL_zu8/download?force=true&w=640"
+        ],
+        [
+            "name"=>"Kermanshah",
+            "image"=>"https://unsplash.com/photos/FNDSJBwGD_A/download?force=true&w=640"
+        ],
+        [
+            "name"=>"Yasuj",
+            "image"=>"https://unsplash.com/photos/AnnxNDoup8I/download?force=true&w=640"
+        ],
+        [
+            "name"=>"Gorgan",
+            "image"=>"https://unsplash.com/photos/mPQgxgarL3Y/download?force=true&w=640"
+        ],
+        [
+            "name"=>"Rasht",
+            "image"=>"https://unsplash.com/photos/g-2wssXHR_o/download?force=true&w=640"
+        ],
+        [
+            "name"=>"Khorramabad",
+            "image"=>"https://unsplash.com/photos/2dizv-g0-ZE/download?force=true&w=640"
+        ],
+        [
+            "name"=>"Sari",
+            "image"=>"https://unsplash.com/photos/WQjP1-YvhB0/download?force=true&w=640"
+        ],
+        [
+            "name"=>"Arak",
+            "image"=>"https://unsplash.com/photos/YqpnlRHS81Y/download?force=true&w=640"
+        ],
+        [
+            "name"=>"Bandar Abbas",
+            "image"=>"https://unsplash.com/photos/BtHmgVLAZE8/download?force=true&w=640"
+        ],
+        [
+            "name"=>"Ardabil",
+            "image"=>"https://unsplash.com/photos/migJ1pm4Ezg/download?force=true&w=640"
+        ],
+        [
+            "name"=>"Hamedan",
+            "image"=>"https://unsplash.com/photos/6OfCrWyAXoE/download?force=true&w=640"
+        ],
+        [
+            "name"=>"Yazd",
+            "image"=>"https://unsplash.com/photos/Jp3OEDO4Q-8/download?force=true&w=640"
+        ],
+        [
+            "name"=>"Isfahan",
+            "image"=>"https://unsplash.com/photos/DUWnANsBhGo/download?force=true&w=640"
+        ],
+        [
+            "name"=>"Karaj",
+            "image"=>"https://unsplash.com/photos/SHhW88LhAz0/download?force=true&w=640"
+        ],
+        [
+            "name"=>"Ilam",
+            "image"=>"https://unsplash.com/photos/mrgNEyQvjVw/download?force=true&w=640"
+        ],
+        [
+            "name"=>"Bushehr",
+            "image"=>"https://unsplash.com/photos/svsQsIcoyO4/download?force=true&w=640"
+        ],
+        [
+            "name"=>"Tehran",
+            "image"=>"https://unsplash.com/photos/kVACg-kVKA0/download?force=true&w=640"
+        ],
+        [
+            "name"=>"Shahr-e Kord",
+            "image"=>"https://unsplash.com/photos/qNOv8N1xyrw/download?force=true&w=640"
+        ]
     ];
     /**
      * Run the database seeds.
@@ -49,7 +142,8 @@ class CitySeeder extends Seeder
     {
         foreach ($this->cities as $city){
             City::insert([
-               'name'=>$city
+                'name'=>$city['name'],
+                'image'=>$city['image']
             ]);
         }
     }
