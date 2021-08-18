@@ -3,12 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Models\Room;
+use App\Models\Trip;
 use Carbon\CarbonPeriod;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class TripController extends Controller
 {
+    public function show(Request $request,Trip $trip)
+    {
+        //TODO: check user can see trip or not
+        $trip->load('room.hotel', 'passengers', 'payment');
+        return view('trip.show', compact('trip'));
+    }
+
     public function store(Room $room, Request $request)
     {
         //TODO : customize error message

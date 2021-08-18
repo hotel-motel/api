@@ -22,4 +22,5 @@ Route::group(['middleware'=>'auth'],function (){
     Route::view('/dashboard', 'dashboard')->name('dashboard');
     Route::get('rooms/{room}', [RoomController::class, 'reserve'])->name('rooms.reserve');
     Route::get('trips/pay/verify', [PaymentController::class, 'verify']);
+    Route::get('trips/{trip}', [TripController::class, 'show']);
 });

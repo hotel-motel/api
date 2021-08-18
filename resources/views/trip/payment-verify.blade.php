@@ -12,7 +12,10 @@
                 </div>
             @else
                 <div class="alert alert-success">
-                    Room reserved
+                    Room reserved.
+                    <a class="alert-link" href="/trips/{{ $trip->id }}">
+                        Trip information
+                    </a>
                 </div>
             @endif
         </div>
