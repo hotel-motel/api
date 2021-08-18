@@ -10,16 +10,15 @@ use Illuminate\Support\Facades\Validator;
 
 class TripController extends Controller
 {
-    public function show(Request $request,Trip $trip)
+    public function show(Trip $trip)
     {
-        //TODO: check user can see trip or not
+        $this->authorize('view', $trip);
         $trip->load('room.hotel', 'passengers', 'payment');
         return view('trip.show', compact('trip'));
     }
 
     public function store(Room $room, Request $request)
     {
-        //TODO : customize error message
         Validator::make($request->all(), [
             'start'=>'required|date',
             'passengers'=>'required|array',

@@ -19,6 +19,7 @@ class CreateHotelsTable extends Migration
             $table->string('name');
             $table->string('address');
             $table->string('image');
+            $table->unsignedBigInteger('credit')->default(0);
             $table->unsignedTinyInteger('star');
             $table->foreignIdFor(City::class)
                 ->constrained()

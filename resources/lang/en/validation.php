@@ -151,6 +151,10 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'passengers.*.last_name'=>'passenger last name',
+        'passengers.*.first_name'=>'passenger first name',
+        'passengers.*.national_code'=>'passenger national code'
+    ],
 
 ];

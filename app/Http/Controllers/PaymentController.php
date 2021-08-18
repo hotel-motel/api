@@ -28,7 +28,7 @@ class PaymentController extends Controller
             $payment=Payment::where(['transaction_id'=> $request->Authority, 'reference_id'=>null])->firstOrFail();
             $receipt = PaymentGateway::amount($payment->amount)->transactionId($request->Authority)->verify();
             $payment->update(['reference_id'=>$receipt->getReferenceId()]);
-            //TODO: increase hotel account credit
+            $payment->trip->room->hotel()->increment('credit', $payment->amount);
             return view('trip.payment-verify', ['trip'=> $payment->trip]);
         } catch (InvalidPaymentException $exception) {
             return view('trip.payment-verify', ['error'=> $exception->getMessage()]);
