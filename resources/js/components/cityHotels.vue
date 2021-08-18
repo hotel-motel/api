@@ -8,6 +8,16 @@
                     </div>
                 </div>
             </div>
+            <nav aria-label="...">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item"  v-for="page in last_page" :class="{'active':page===current_page}" @click="changePage(page)">
+                        <a class="page-link" href="#">
+                            {{ page }}
+                        </a>
+                    </li>
+
+                </ul>
+            </nav>
         </div>
     </div>
 </template>
@@ -21,12 +31,26 @@ export default {
     },
     data(){
       return{
-          hotels:null
+          hotels:null,
+          last_page:1,
+          current_page:1
       }
     },
     mounted() {
         axios.get('/cities/'+this.city_name+'/hotels')
-        .then(response=>this.hotels=response.data)
+        .then(response=>this.loadData(response, 1))
+    },
+    methods:{
+        loadData(response, page){
+            this.hotels=response.data.data
+            this.last_page=response.data.last_page
+            this.current_page=page
+        },
+        changePage(page){
+            this.hotels=null
+            axios.get('/cities/'+this.city_name+'/hotels?page='+page)
+                .then(response=>this.loadData(response, page))
+        }
     }
 }
 </script>

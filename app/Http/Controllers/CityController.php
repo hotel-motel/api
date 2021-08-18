@@ -19,6 +19,6 @@ class CityController extends Controller
 
     public function hotels(City $city)
     {
-        return $city->hotels;
+        return $city->hotels()->paginate();
     }
 }
