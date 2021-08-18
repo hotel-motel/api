@@ -13,14 +13,9 @@ class RoomController extends Controller
             'start'=>'required|date',
             'end'=>'required|bail|date|after:start'
         ]);
-        //TODO: make fail error response in this part pretty
-        if ($validator->fails()){
-            abort(403, 'invalid start & end dates');
-        }
+        abort_if($validator->fails(), 403, 'invalid start & end dates');
         $roomIsEmpty=$room->isEmpty($request->start, $request->end);
-        if ( ! $roomIsEmpty){
-            abort(403, 'Reserved for this period');
-        }
+        abort_unless($roomIsEmpty, 403, 'Reserved for this period');
         $room->load('trips', 'hotel');
         return view('room.show', compact('room'));
     }
