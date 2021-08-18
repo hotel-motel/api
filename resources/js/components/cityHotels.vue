@@ -8,14 +8,13 @@
                     </div>
                 </div>
             </div>
-            <nav aria-label="...">
+            <nav aria-label="..." v-if="last_page>1">
                 <ul class="pagination justify-content-center">
                     <li class="page-item"  v-for="page in last_page" :class="{'active':page===current_page}" @click="changePage(page)">
                         <a class="page-link" href="#">
                             {{ page }}
                         </a>
                     </li>
-
                 </ul>
             </nav>
         </div>
@@ -47,6 +46,8 @@ export default {
             this.current_page=page
         },
         changePage(page){
+            if (this.current_page===page)
+                return;
             this.hotels=null
             axios.get('/cities/'+this.city_name+'/hotels?page='+page)
                 .then(response=>this.loadData(response, page))
