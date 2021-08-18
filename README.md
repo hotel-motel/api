@@ -10,7 +10,7 @@ This project is a hotel reservation project, which you can reserve a hotel in Ir
   The project developed with:
     - [Vue.js](https://vuejs.org) for client-side of project.
     - [Laravel](https://laravel.com/) for server-side implementation
-    - [Bootstrap](https://getbootstrap.com/)  & [tailwind](https://tailwindcss.com/) for design pages
+    - [Bootstrap](https://getbootstrap.com/)  & [Tailwind](https://tailwindcss.com/) for design pages
     - [Boxicons](https://www.google.com) for implement page icons
 
 - ## User types
