@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CityController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\RoomController;
@@ -17,6 +18,7 @@ Route::post('hotels/{hotel}', [HotelController::class, 'get']);
 Route::get('hotels/{hotel}', [HotelController::class, 'show'])->name('hotels.show');
 
 Route::group(['middleware'=>'auth'],function (){
+    Route::get('user', [UserController::class, 'show']);
     Route::get('trips', [TripController::class, 'index']);
     Route::get('trips/{trip}/pay', [PaymentController::class, 'pay']);
     Route::post('rooms/{room}/trips', [TripController::class, 'store']);
