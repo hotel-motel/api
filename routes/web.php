@@ -17,6 +17,7 @@ Route::post('hotels/{hotel}', [HotelController::class, 'get']);
 Route::get('hotels/{hotel}', [HotelController::class, 'show'])->name('hotels.show');
 
 Route::group(['middleware'=>'auth'],function (){
+    Route::get('trips', [TripController::class, 'index']);
     Route::get('trips/{trip}/pay', [PaymentController::class, 'pay']);
     Route::post('rooms/{room}/trips', [TripController::class, 'store']);
     Route::view('/dashboard', 'dashboard')->name('dashboard');

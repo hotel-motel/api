@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Validator;
 
 class TripController extends Controller
 {
+    public function index(Request $request)
+    {
+        return $request->user()->trips()->with('room.hotel.city')->get();
+    }
+
     public function show(Trip $trip)
     {
         $this->authorize('view', $trip);

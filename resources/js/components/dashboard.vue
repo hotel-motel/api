@@ -1,15 +1,17 @@
 <template>
     <div class="row">
-        <div class="col-3 grid gap-2">
-            <router-link class="btn btn-dark" to="/personal_info">
-                personal info
-            </router-link>
-            <router-link class="btn btn-dark" to="/trips">
-                trips
-            </router-link>
-            <router-link class="btn btn-dark" to="/change_password">
-                change password
-            </router-link>
+        <div class="col-3">
+            <div class="grid gap-2">
+                <router-link class="btn btn-dark" to="/personal_info">
+                    personal info
+                </router-link>
+                <router-link class="btn btn-dark" to="/trips">
+                    trips
+                </router-link>
+                <router-link class="btn btn-dark" to="/change_password">
+                    change password
+                </router-link>
+            </div>
         </div>
         <div class="col-9">
             <router-view></router-view>
