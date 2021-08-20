@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -18,6 +19,7 @@ Route::post('hotels/{hotel}', [HotelController::class, 'get']);
 Route::get('hotels/{hotel}', [HotelController::class, 'show'])->name('hotels.show');
 
 Route::group(['middleware'=>'auth'],function (){
+    Route::post('change/password', ChangePasswordController::class);
     Route::get('user', [UserController::class, 'show']);
     Route::get('trips', [TripController::class, 'index']);
     Route::get('trips/{trip}/pay', [PaymentController::class, 'pay']);

@@ -3,6 +3,7 @@ require('./bootstrap');
 require('alpinejs');
 
 import Vue from 'vue/dist/vue.js';
+import vuelidate from 'vuelidate';
 import VueRouter from 'vue-router';
 import city from "./components/city";
 import dashboard from "./components/dashboard";
@@ -11,6 +12,7 @@ import cityHotels from "./components/cityHotels";
 import passengerForm from './components/passengerform';
 import popularCities from "./components/popularCities";
 
+Vue.use(vuelidate)
 Vue.use(VueRouter)
 
 new Vue({
