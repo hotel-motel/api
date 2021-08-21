@@ -1,6 +1,9 @@
 <template>
     <div>
-        <div class="grid gap-7 h5" v-if="user">
+        <div class="d-flex justify-content-center mt-1 mb-1" v-if="is_loading">
+            <div class="spinner-border" role="status"></div>
+        </div>
+        <div class="grid gap-7 h5" v-else-if="user">
             <div class="row">
                 <div class="col">
                     <i class='bx bx-user-pin bx-sm'></i>
@@ -41,12 +44,14 @@ import moment from 'moment';
 export default {
     data(){
         return{
-            user:null
+            user:null,
+            is_loading:true
         }
     },
     mounted() {
         axios.get('/user')
         .then(response=>this.user=response.data)
+        .finally(()=>{ this.is_loading=false })
     },
     computed:{
         getTotalTripsDuration(){

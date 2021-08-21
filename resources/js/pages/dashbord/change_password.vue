@@ -1,6 +1,9 @@
 <template>
     <div>
-        <div class="grid gap-3" v-if="changed===false">
+        <div class="d-flex justify-content-center mt-1 mb-1" v-if="is_loading">
+            <div class="spinner-border" role="status"></div>
+        </div>
+        <div class="grid gap-3" v-else-if="changed===false">
             <div class="grid gap-2">
                 <span>
                     Old password :
@@ -59,8 +62,9 @@ export default {
             changed:false,
             old_password:'',
             new_password:'',
+            is_loading:false,
             show_errors:false,
-            new_password_confirm:''
+            new_password_confirm:'',
         }
     },
     methods:{
@@ -70,11 +74,14 @@ export default {
             if (this.$v.$invalid){
                 return
             }
+            this.is_loading=true
+            //TODO: check if old password is wrong show error
             axios.post('/change/password', {
                 old_password:this.old_password,
                 new_password:this.new_password,
             })
             .then(response=>this.changed=true)
+            .finally(()=>{ this.is_loading=false })
         }
     },
     validations:{

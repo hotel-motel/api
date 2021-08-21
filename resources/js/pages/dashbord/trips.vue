@@ -1,6 +1,9 @@
 <template>
     <div class="grid gap-3">
-        <table class="table table-striped">
+        <div class="d-flex justify-content-center mt-1 mb-1" v-if="is_loading">
+            <div class="spinner-border" role="status"></div>
+        </div>
+        <table class="table table-striped" v-else-if="trips.length>0">
             <thead>
                 <tr>
                     <th scope="col"> </th>
@@ -34,6 +37,11 @@
                 </tr>
             </tbody>
         </table>
+        <div class="d-flex justify-content-center mt-2 mb-2" v-else>
+            <h1 class="font-bold">
+                You don't have Trip
+            </h1>
+        </div>
     </div>
 </template>
 
@@ -42,12 +50,13 @@ export default {
     data(){
         return{
           trips:[],
+            is_loading:true
         }
     },
     mounted() {
-        //TODO: catch error of request
         axios.get('/trips')
         .then(response=>this.trips=response.data)
+        .finally(()=>{ this.is_loading=false })
     }
 }
 </script>
