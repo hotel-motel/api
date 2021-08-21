@@ -8,7 +8,7 @@ use App\Http\Requests\SearchRoomRequest;
 
 class HotelController extends Controller
 {
-    public function get(SearchRoomRequest $request, Hotel $hotel)
+    public function search_rooms(SearchRoomRequest $request, Hotel $hotel)
     {
         $response['rooms']=$hotel->rooms;
         $response['reserved']=$hotel->rooms->filter(function ($room) use($request) {
