@@ -25,7 +25,10 @@
                             </span>
                         </div>
                         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg" v-for="(passenger, index) in passengers">
-                            <div class="p-6 bg-white border-b border-gray-200">
+                            <div class="d-flex justify-content-center mt-1 mb-1" v-if="is_loading">
+                                <div class="spinner-border" role="status"></div>
+                            </div>
+                            <div class="p-6 bg-white border-b border-gray-200" v-else>
                                 <div class="flex justify-around">
                                     <div>
                                         <span class="alert alert-dark">
@@ -75,7 +78,7 @@
                         </div>
                         <div class="py-1">
                             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 grid gap-2" v-show="passengers.length>0">
-                                <Button class="btn btn-success" @click="checkForm()" >
+                                <Button class="btn btn-success" @click="checkForm()"  :disabled="is_loading">
                                     Continue
                                 </Button>
                             </div>
@@ -91,6 +94,7 @@
 	    props:['capacity'],
 		data(){
 			return {
+			    is_loading:false,
 				passengers:[],
                 errors: {}
 			}
@@ -104,14 +108,21 @@
 			    this.passengers.splice(index, 1)
             },
             checkForm(){
+			    //TODO : validate form
+                this.errors={}
+			    this.is_loading=true
                 const urlParams = new URLSearchParams(window.location.search);
+                // Note : we make is_loading false in catch only because we need stil loading while redirection to payment page
                 axios.post(window.location.href.split('?')[0]+'/trips', {
                     'passengers':this.passengers,
                     'start':urlParams.get('start'),
                     'end':urlParams.get('end')
                 })
-                .then(response=> window.location.href='/trips/'+response.data+'/pay')
-                .catch(error=> this.errors=error.response.data.errors);
+                .then(response=> {window.location.href='/trips/'+response.data+'/pay'})
+                .catch(error=> {
+                    this.errors = error.response.data.errors
+                    this.is_loading=false
+                })
             }
 		}
 	}
