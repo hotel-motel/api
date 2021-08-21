@@ -90,6 +90,7 @@
     </div>
 </template>
 <script>
+    import {required, minLength, maxLength} from 'vuelidate/lib/validators'
 	export default{
 	    props:['capacity'],
 		data(){
@@ -102,13 +103,16 @@
 		methods:{
 			addPassengerField(){
 				this.passengers.push({'first_name':'', 'last_name':'', 'national_code':''})
-                console.log(this.passengers.length<this.capacity);
 			},
             removePassenger(index){
 			    this.passengers.splice(index, 1)
             },
             checkForm(){
-			    //TODO : validate form
+			    //TODO: show error of vuelidate
+                this.$v.$touch()
+                if (this.$v.$invalid){
+                    return
+                }
                 this.errors={}
 			    this.is_loading=true
                 const urlParams = new URLSearchParams(window.location.search);
@@ -124,6 +128,24 @@
                     this.is_loading=false
                 })
             }
-		}
+		},
+        validations:{
+            passengers:{
+                required,
+                $each:{
+                    first_name:{
+                        required
+                    },
+                    last_name:{
+                        required
+                    },
+                    national_code:{
+                        required,
+                        minLength:minLength(10),
+                        maxLength:maxLength(10)
+                    }
+                }
+            }
+        }
 	}
 </script>
