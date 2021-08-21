@@ -2,6 +2,9 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="d-flex justify-content-center mt-4" v-if="is_loading===true">
+                    <div class="spinner-border" role="status"></div>
+                </div>
                 <div class="row justify-around m-3">
                     <div class="col-4 mb-3" v-for="hotel in hotels">
                         <hotel :hotel="hotel"></hotel>
@@ -22,7 +25,7 @@
 </template>
 
 <script>
-import hotel from "./hotel";
+import hotel from "./hotel"
 export default {
     props:['city_name'],
     components:{
@@ -32,12 +35,12 @@ export default {
       return{
           hotels:null,
           last_page:1,
+          is_loading:true,
           current_page:1
       }
     },
     mounted() {
-        axios.get('/cities/'+this.city_name+'/hotels')
-        .then(response=>this.loadData(response, 1))
+        this.sendRequest(1)
     },
     methods:{
         loadData(response, page){
@@ -49,8 +52,17 @@ export default {
             if (this.current_page===page)
                 return;
             this.hotels=null
+            this.sendRequest(page)
+        },
+        sendRequest(page){
+            this.is_loading=true
             axios.get('/cities/'+this.city_name+'/hotels?page='+page)
-                .then(response=>this.loadData(response, page))
+                .then(response=>{
+                    this.loadData(response, page)
+                })
+                .finally(()=>{
+                    this.is_loading=false
+                })
         }
     }
 }
