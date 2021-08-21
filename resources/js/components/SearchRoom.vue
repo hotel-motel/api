@@ -16,7 +16,10 @@
                 </span>
                     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div class="p-6 bg-white border-b border-gray-200">
-                            <div class="flex justify-around">
+                            <div class="d-flex justify-content-center mt-3" v-if="is_loading">
+                                <div class="spinner-border" role="status"></div>
+                            </div>
+                            <div class="flex justify-around" v-else>
                                 <div>
                                 <span class="h5">
                                     <i class='bx bx-down-arrow-alt'></i>
@@ -92,24 +95,28 @@ import moment from 'moment'
 export default {
     data(){
         return{
+            end:'',
+            start:'',
             error:null,
             rooms:null,
             reserved:[],
-            start:'',
-            end:''
+            is_loading:false
         }
     },
     methods:{
         search(){
+            this.is_loading=true
+            this.rooms=null
+            this.reserved=null
            axios.post(window.location.href, {
                start:this.start,
                end:this.end
            }).then(response=>this.loadData(response.data))
             .catch(error=>this.error=error.response.data.errors.end[0])
+            .finally(()=>{ this.is_loading=false })
 
         },
         loadData(response){
-            this.getSearchDuration();
             this.rooms=response.rooms
             this.reserved=response.reserved
         },

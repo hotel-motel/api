@@ -15,7 +15,7 @@ Route::view('/', 'home');
 Route::get('cities/', [CityController::class, 'index'])->name('cities.index');
 Route::get('cities/{city:name}', [CityController::class, 'show'])->name('cities.show');
 Route::get('cities/{city:name}/hotels', [CityController::class, 'hotels'])->name('cities.hotels');
-Route::post('hotels/{hotel}', [HotelController::class, 'get']);
+Route::post('hotels/{hotel}', [HotelController::class, 'search_rooms']);
 Route::get('hotels/{hotel}', [HotelController::class, 'show'])->name('hotels.show');
 
 Route::group(['middleware'=>'auth'],function (){
