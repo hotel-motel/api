@@ -8,7 +8,7 @@ class CityController extends Controller
 {
     public function index()
     {
-        $cities=City::all();
+        $cities=City::has('hotels')->get();
         return view('city.list', compact('cities'));
     }
 
