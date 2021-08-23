@@ -56,7 +56,7 @@ export default {
         },
         sendRequest(page){
             this.is_loading=true
-            axios.get('/cities/'+this.city_name+'/hotels?page='+page)
+            axios.get('/api/cities/'+this.city_name+'/hotels?page='+page)
                 .then(response=>{
                     this.loadData(response, page)
                 })

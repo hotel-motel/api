@@ -24,5 +24,5 @@
             </div>
         </div>
     </x-slot>
-    <search-room></search-room>
+    <search-room :hotel_id="{{ $hotel->id }}"></search-room>
 </x-app-layout>

@@ -92,7 +92,7 @@
 <script>
     import {required, minLength, maxLength} from 'vuelidate/lib/validators'
 	export default{
-	    props:['capacity'],
+	    props:['capacity', 'room_id'],
 		data(){
 			return {
 			    is_loading:false,
@@ -117,7 +117,7 @@
 			    this.is_loading=true
                 const urlParams = new URLSearchParams(window.location.search);
                 // Note : we make is_loading false in catch only because we need stil loading while redirection to payment page
-                axios.post(window.location.href.split('?')[0]+'/trips', {
+                axios.post('/rooms/'+this.room_id+'/trips', {
                     'passengers':this.passengers,
                     'start':urlParams.get('start'),
                     'end':urlParams.get('end')

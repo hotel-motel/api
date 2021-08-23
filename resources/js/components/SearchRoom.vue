@@ -93,6 +93,7 @@
 <script>
 import moment from 'moment'
 export default {
+    props:['hotel_id'],
     data(){
         return{
             end:'',
@@ -108,7 +109,7 @@ export default {
             this.is_loading=true
             this.rooms=null
             this.reserved=null
-           axios.post(window.location.href, {
+           axios.post('/api/hotels/'+this.hotel_id, {
                start:this.start,
                end:this.end
            }).then(response=>this.loadData(response.data))
