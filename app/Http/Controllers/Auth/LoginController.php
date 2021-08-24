@@ -2,18 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
+use App\Http\Requests\Login;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class LoginController extends Controller
 {
-    /**
-     * Handle the incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function __invoke(Request $request)
+    public function __invoke(Login $request)
     {
         if ($token=auth()->attempt($request->only(['email', 'password'])))
             return response($token);
