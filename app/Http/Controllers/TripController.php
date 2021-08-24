@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreTrip;
 use App\Models\Room;
 use App\Models\Trip;
 use Carbon\CarbonPeriod;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 
 class TripController extends Controller
 {
@@ -22,16 +22,8 @@ class TripController extends Controller
         return response($trip);
     }
 
-    public function store(Room $room, Request $request)
+    public function store(Room $room, StoreTrip $request)
     {
-        Validator::make($request->all(), [
-            'start'=>'required|date',
-            'passengers'=>'required|array',
-            'end'=>'required|date|after:start',
-            'passengers.*.last_name'=>'required',
-            'passengers.*.first_name'=>'required',
-            'passengers.*.national_code'=>'required|size:10'
-        ])->validate();
         if (sizeof($request->passengers)>$room->max_capacity){
             return response(['errors'=>'Passenger count is more than room capacity'], 422);
         }
