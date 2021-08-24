@@ -17,6 +17,6 @@ class RoomController extends Controller
         $roomIsEmpty=$room->isEmpty($request->start, $request->end);
         abort_unless($roomIsEmpty, 403, 'Reserved for this period');
         $room->load('trips', 'hotel');
-        return view('room.show', compact('room'));
+        return response($room);
     }
 }

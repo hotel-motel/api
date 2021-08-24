@@ -19,7 +19,7 @@ class TripController extends Controller
     {
         $this->authorize('view', $trip);
         $trip->load('room.hotel', 'passengers', 'payment');
-        return view('trip.show', compact('trip'));
+        return response($trip);
     }
 
     public function store(Room $room, Request $request)

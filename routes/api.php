@@ -1,44 +1,28 @@
 <?php
 
-use App\Http\Controllers\Auth\LogoutController;
-use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\TripController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HotelController;
-use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ChangePasswordController;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
+require 'auth.php';
 
+Route::get('cities/', [CityController::class, 'index']);
 Route::post('hotels/{hotel}', [HotelController::class, 'search_rooms']);
-Route::get('cities/{city:name}/hotels', [CityController::class, 'hotels'])->name('cities.hotels');
+Route::get('cities/{city:name}/hotels', [CityController::class, 'hotels']);
+Route::get('cities/{city:name}', [CityController::class, 'show']);
+Route::get('hotels/{hotel}', [HotelController::class, 'show']);
 
-TODO:
-Route::group(['middleware' => 'api', 'prefix' => 'auth'], function () {
-    Route::post('login', LoginController::class);
-    Route::post('logout', LogoutController::class);
-//    Route::post('refresh', 'AuthController@refresh');
-    Route::get('user', \App\Http\Controllers\Auth\UserController::class);
+Route::group(['middleware'=>'api:auth'], function (){
+    Route::get('user', [UserController::class, 'show']);
+    Route::get('trips', [TripController::class, 'index']);
+    Route::get('trips/{trip}', [TripController::class, 'show']);
+    Route::get('rooms/{room}', [RoomController::class, 'reserve']);
+    Route::post('rooms/{room}/trips', [TripController::class, 'store']);
+    Route::post('change/password', ChangePasswordController::class);
+    Route::get('trips/pay/verify', [PaymentController::class, 'verify']);
 });
-
-Route::group(['middleware'=>'guest', 'prefix'=>'auth'], function (){
-    Route::post('register', RegisterController::class);
-});
-
-//Route::group(['middleware'=>'auth:sanctum'], function (){
-//    Route::get('user', [UserController::class, 'show']);
-//    Route::post('change/password', ChangePasswordController::class);
-//    Route::post('rooms/{room}/trips', [TripController::class, 'store']);
-//});

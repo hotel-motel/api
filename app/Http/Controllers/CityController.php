@@ -9,12 +9,12 @@ class CityController extends Controller
     public function index()
     {
         $cities=City::has('hotels')->get();
-        return view('city.list', compact('cities'));
+        return response($cities);
     }
 
     public function show(City $city)
     {
-        return view('city.show', compact('city'));
+        return response($city);
     }
 
     public function hotels(City $city)
