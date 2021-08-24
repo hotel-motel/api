@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\RoomController;
@@ -30,6 +31,10 @@ Route::group(['middleware' => 'api', 'prefix' => 'auth'], function () {
     Route::post('logout', LogoutController::class);
 //    Route::post('refresh', 'AuthController@refresh');
     Route::get('user', \App\Http\Controllers\Auth\UserController::class);
+});
+
+Route::group(['middleware'=>'guest', 'prefix'=>'auth'], function (){
+    Route::post('register', RegisterController::class);
 });
 
 //Route::group(['middleware'=>'auth:sanctum'], function (){
