@@ -9,8 +9,6 @@ use App\Http\Controllers\HotelController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ChangePasswordController;
 
-require __DIR__.'/auth.php';
-
 Route::view('/', 'home');
 Route::get('cities/', [CityController::class, 'index'])->name('cities.index');
 Route::get('cities/{city:name}', [CityController::class, 'show'])->name('cities.show');
