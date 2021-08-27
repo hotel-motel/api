@@ -26,5 +26,6 @@ class Payment extends Model
             $this->transaction_id=$transactionId;
             $this->save();
         })->pay()->render();;
+        return '123';
     }
 }
