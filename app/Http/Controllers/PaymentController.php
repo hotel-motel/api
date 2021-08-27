@@ -22,13 +22,12 @@ class PaymentController extends Controller
 
     public function verify(Request $request)
     {
-        //TODO set style to response
         try {
             $payment=Payment::where(['transaction_id'=> $request->Authority, 'reference_id'=>null])->firstOrFail();
             $receipt = PaymentGateway::amount($payment->amount)->transactionId($payment->transaction_id)->verify();
             $payment->update(['reference_id'=>$receipt->getReferenceId()]);
             $payment->trip->room->hotel()->increment('credit', $payment->amount);
-            return view('payment.verify', compact('receipt'));
+            return view('payment.verify', ['trip'=>$payment->trip]);
         } catch (InvalidPaymentException $exception) {
             return view('payment.verify', compact('exception'));
         }
