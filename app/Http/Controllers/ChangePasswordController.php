@@ -12,7 +12,7 @@ class ChangePasswordController extends Controller
     public function __invoke(ChangePassword $request)
     {
         if ( ! Hash::check($request->old_password, $request->user()->password)){
-            return response('invalid password', 422);
+            return $this->setStatusCode(422)->respondWithError('old_password', 'Invalid old password');
         }
         $request->user()->update([
             'password'=>Hash::make($request->new_password)
