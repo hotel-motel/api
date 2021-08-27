@@ -15,6 +15,6 @@ class LoginController extends Controller
     {
         if ($token=auth()->attempt($request->only(['email', 'password'])))
             return response($token);
-        return $this->setStatusCode(422)->respond('invalid password');
+        return $this->setStatusCode(422)->respondWithError('password', 'Invalid password');
     }
 }
