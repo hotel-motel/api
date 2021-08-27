@@ -7,6 +7,8 @@ use App\Http\Requests\ChangePassword;
 
 class ChangePasswordController extends Controller
 {
+    use ApiController;
+
     public function __invoke(ChangePassword $request)
     {
         if ( ! Hash::check($request->old_password, $request->user()->password)){
@@ -15,6 +17,6 @@ class ChangePasswordController extends Controller
         $request->user()->update([
             'password'=>Hash::make($request->new_password)
         ]);
-        return response()->noContent();
+        return $this->respondNoContent();
     }
 }

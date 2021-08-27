@@ -6,19 +6,21 @@ use App\Models\City;
 
 class CityController extends Controller
 {
+    use ApiController;
+
     public function index()
     {
         $cities=City::has('hotels')->get();
-        return response($cities);
+        return $this->respond($cities);
     }
 
     public function show(City $city)
     {
-        return response($city);
+        return $this->respond($city);
     }
 
     public function hotels(City $city)
     {
-        return $city->hotels()->paginate();
+        return $this->respond($city->hotels()->paginate());
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Http\Controllers\ApiController;
 use App\Http\Requests\Register;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -10,6 +11,8 @@ use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
+    use ApiController;
+
     public function __invoke(Register $request)
     {
         $user=User::create([
@@ -19,6 +22,6 @@ class RegisterController extends Controller
         ]);
         //TODO: create email_verification row in db
         //TODO: send email_verification
-        return response()->noContent();
+        return $this->respondNoContent();
     }
 }

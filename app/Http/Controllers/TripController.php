@@ -10,22 +10,25 @@ use Illuminate\Http\Request;
 
 class TripController extends Controller
 {
+    use ApiController;
+
     public function index(Request $request)
     {
-        return $request->user()->trips()->with('room.hotel.city')->get();
+        $response=$request->user()->trips()->with('room.hotel.city')->get();
+        return $this->respond($response);
     }
 
     public function show(Trip $trip)
     {
         $this->authorize('view', $trip);
         $trip->load('room.hotel', 'passengers', 'payment');
-        return response($trip);
+        return $this->respond($trip);
     }
 
     public function store(Room $room, StoreTrip $request)
     {
         if (sizeof($request->passengers)>$room->max_capacity){
-            return response(['errors'=>'Passenger count is more than room capacity'], 422);
+            return $this->setStatusCode(422)->respond(['errors'=>'Passenger count is more than room capacity']);
         }
         $tripDays=CarbonPeriod::create($request->start, $request->end);
         $tripsInDate=$room->trips->filter(function ($trip) use ($request, $tripDays){
@@ -36,7 +39,7 @@ class TripController extends Controller
             }
         });
         if ($tripsInDate->count()>0){
-            return response(['errors'=>'Reserved for this period'], 422);
+            return $this->setStatusCode(422)->respond(['errors'=>'Reserved for this period']);
         }
         $trip=auth()->user()->trips()->create([
             'start'=>$request->start,
@@ -45,6 +48,6 @@ class TripController extends Controller
             'amount'=>$room->price*$tripDays->count()
         ]);
         $trip->passengers()->createMany($request->passengers);
-        return $trip->id;
+        return $this->respond($trip->id);
     }
 }

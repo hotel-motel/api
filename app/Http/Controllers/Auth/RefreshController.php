@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Http\Controllers\ApiController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class RefreshController extends Controller
 {
+    use ApiController;
+
     public function __invoke(Request $request)
     {
-        return response(auth()->refresh());
+        return $this->respond(auth()->refresh());
     }
 }

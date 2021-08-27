@@ -8,6 +8,8 @@ use App\Http\Requests\SearchRoomRequest;
 
 class HotelController extends Controller
 {
+    use ApiController;
+
     public function search_rooms(SearchRoomRequest $request, Hotel $hotel)
     {
         $response['rooms']=$hotel->rooms;
@@ -16,10 +18,10 @@ class HotelController extends Controller
                 return $room;
             }
         })->pluck('id')->toArray();
-        return $response;
+        return $this->respond($response);
     }
     public function show(Hotel $hotel)
     {
-        return response($hotel);
+        return $this->respond($hotel);
     }
 }

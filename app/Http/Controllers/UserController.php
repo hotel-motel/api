@@ -6,8 +6,10 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    use ApiController;
+
     public function show(Request $request)
     {
-        return $request->user()->load('trips');
+        return $this->respond($request->user()->load('trips'));
     }
 }
