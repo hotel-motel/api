@@ -4,10 +4,14 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\ApiController;
 use App\Http\Requests\Register;
+use App\Mail\EmailVerify;
+use App\Models\EmailVerification;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class RegisterController extends Controller
 {
@@ -20,8 +24,11 @@ class RegisterController extends Controller
             'email'=>$request->email,
             'password'=>Hash::make($request->password)
         ]);
-        //TODO: create email_verification row in db
-        //TODO: send email_verification
+        $emailVerification=EmailVerification::create([
+            'email'=>$user->email,
+            'token'=>Str::random()
+        ]);
+        Mail::to($user->email)->queue(new EmailVerify($emailVerification->token));
         return $this->respondNoContent();
     }
 }
