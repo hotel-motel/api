@@ -47,6 +47,13 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasMany(Trip::class, 'creator_id');
     }
 
+    public function markEmailAsVerified()
+    {
+        return $this->forceFill([
+            'email_verified_at' => $this->freshTimestamp(),
+        ])->save();
+    }
+
     public function hasVerifiedEmail()
     {
         return ! is_null($this->email_verified_at);

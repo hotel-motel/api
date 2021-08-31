@@ -30,7 +30,7 @@ class EmailVerify extends Mailable
      */
     public function build()
     {
-        return $this->view('Emails.Verification.Email')
+        return $this->view('emails.verification.email')
             ->subject('Email Verify')
             ->with('token', $this->token);
     }
