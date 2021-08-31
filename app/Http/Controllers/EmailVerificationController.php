@@ -11,6 +11,6 @@ class EmailVerificationController extends Controller
     {
         $emailVerification->user->markEmailAsVerified();
         $emailVerification->delete();
-        return view('verification.email.success');
+        return view('verification.email.success', ['email'=>$emailVerification->email]);
     }
 }
