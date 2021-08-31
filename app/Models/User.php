@@ -47,6 +47,10 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasMany(Trip::class, 'creator_id');
     }
 
+    public function hasVerifiedEmail()
+    {
+        return ! is_null($this->email_verified_at);
+    }
     /**
      * Get the identifier that will be stored in the subject claim of the JWT.
      *
