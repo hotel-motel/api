@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\PasswordResetCodeVerify;
 use App\Http\Requests\PasswordReset as PasswordResetRequest;
 use App\Http\Requests\PasswordResetNotify as PasswordResetNotifyRequest;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\PasswordReset as PasswordResetMail;
 
 class PasswordResetController extends Controller
 {
@@ -18,7 +20,7 @@ class PasswordResetController extends Controller
     {
         $user=User::where('email', $request->email)->first();
         $passwordReset=PasswordReset::generate($user);
-        //TODO: send email
+        Mail::to($user->email)->send(new PasswordResetMail($passwordReset->token));
         return $this->respondNoContent();
     }
 
