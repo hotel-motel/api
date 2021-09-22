@@ -33,7 +33,8 @@ This project is a hotel reservation project, which you can reserve a hotel in Ir
 
 
 - ## User types
-    - Customer (Can reserve a room at hotel)
+    - Customer
+    - Hotel Admin
     
 - ## Database structure 
 
