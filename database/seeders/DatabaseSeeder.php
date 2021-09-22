@@ -20,7 +20,9 @@ class DatabaseSeeder extends Seeder
             RoomSeeder::class,
             TripSeeder::class,
             PaymentSeeder::class,
-            PassengerSeeder::class
+            PassengerSeeder::class,
+            PermissionSeeder::class,
+            HotelOperatorSeeder::class,
         ]);
     }
 }
