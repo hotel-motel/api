@@ -12,6 +12,7 @@ class UserController extends Controller
 
     public function __invoke(Request $request)
     {
-        return $this->respond(auth()->user());
+        $user=auth()->user()->load('roles');
+        return $this->respond($user);
     }
 }

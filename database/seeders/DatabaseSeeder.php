@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             TripSeeder::class,
             PaymentSeeder::class,
             PassengerSeeder::class,
+            RoleSeeder::class,
             PermissionSeeder::class,
             HotelOperatorSeeder::class,
         ]);
