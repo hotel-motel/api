@@ -12,7 +12,7 @@ class HotelController extends Controller
 
     public function search_rooms(SearchRoomRequest $request, Hotel $hotel)
     {
-        $response['rooms']=$hotel->rooms;
+        $response['rooms']=$hotel->rooms()->orderBy('floor')->get();
         $response['reserved']=$hotel->rooms->filter(function ($room) use($request) {
             if( ! $room->isEmpty($request->start, $request->end)){
                 return $room;
