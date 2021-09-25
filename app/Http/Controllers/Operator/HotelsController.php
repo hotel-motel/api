@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Operator;
 
-use App\Http\Controllers\Controller;
 use App\Models\Hotel;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class HotelsController extends Controller
 {
