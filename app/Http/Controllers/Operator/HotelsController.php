@@ -23,12 +23,12 @@ class HotelsController extends Controller
 
     public function show(Hotel $hotel)
     {
-        $response['rooms']=$hotel->rooms()->orderBy('floor')->get();
-        $response['reserved']=$hotel->rooms->filter(function ($room) {
+        $hotel->rooms=$hotel->rooms()->orderBy('floor')->get();
+        $hotel->reserved_rooms=$hotel->rooms->filter(function ($room) {
             if( ! $room->isEmpty(now(), now())){
                 return $room;
             }
         })->pluck('id')->toArray();
-        return $this->respond($response);
+        return $this->respond($hotel);
     }
 }
