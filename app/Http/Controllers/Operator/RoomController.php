@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Operator;
 
 use App\Models\Hotel;
+use App\Models\Room;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateRoom;
 use App\Http\Controllers\Controller;
@@ -22,17 +23,17 @@ class RoomController extends Controller
         ]);
     }
 
-    public function show($id)
+    public function show(Room $room)
+    {
+        return $this->respond($room);
+    }
+
+    public function update(Request $request, Room $room)
     {
         // TODO
     }
 
-    public function update(Request $request, $id)
-    {
-        // TODO
-    }
-
-    public function destroy($id)
+    public function destroy(Room $room)
     {
         // TODO
     }
