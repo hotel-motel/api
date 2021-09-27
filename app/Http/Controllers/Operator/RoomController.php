@@ -25,7 +25,7 @@ class RoomController extends Controller
 
     public function show(Room $room)
     {
-        return $this->respond($room);
+        return $this->respond($room->load(['hotel', 'trips.passengers']));
     }
 
     public function update(Request $request, Room $room)
