@@ -23,8 +23,9 @@ class RoomController extends Controller
         ]);
     }
 
-    public function show(Room $room)
+    public function show($id)
     {
+        $room=Room::withTrashed()->findOrFail($id);
         return $this->respond($room->load(['hotel', 'trips.passengers']));
     }
 
@@ -35,6 +36,7 @@ class RoomController extends Controller
 
     public function destroy(Room $room)
     {
-        // TODO
+        $room->delete();
+        return $this->respondNoContent();
     }
 }

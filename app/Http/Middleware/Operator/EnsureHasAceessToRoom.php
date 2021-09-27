@@ -17,7 +17,8 @@ class EnsureHasAceessToRoom
      */
     public function handle(Request $request, Closure $next)
     {
-        abort_unless($request->user()->hasPermissionTo('hotel.'.$request->room->hotel->id), 401, "Do not access to this hotel");
+        $room=Room::withTrashed()->findOrFail($request->room);
+        abort_unless($request->user()->hasPermissionTo('hotel.'.$room->hotel->id), 401, "Do not access to this hotel");
         return $next($request);
     }
 }

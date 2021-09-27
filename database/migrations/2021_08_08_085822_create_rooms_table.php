@@ -25,6 +25,7 @@ class CreateRoomsTable extends Migration
                 ->cascadeOnUpdate()
                 ->cascadeOnUpdate();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
