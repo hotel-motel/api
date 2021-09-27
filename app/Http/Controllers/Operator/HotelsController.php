@@ -23,7 +23,7 @@ class HotelsController extends Controller
 
     public function show(Hotel $hotel)
     {
-        $hotel->rooms=$hotel->rooms()->orderBy('floor')->get()->load('trips');
+        $hotel->rooms=$hotel->rooms()->withTrashed()->orderBy('floor')->get()->load('trips');
         $hotel->reserved_rooms=$hotel->rooms->filter(function ($room) {
             if( ! $room->isEmpty(now(), now())){
                 return $room;

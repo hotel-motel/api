@@ -34,8 +34,9 @@ class RoomController extends Controller
         // TODO
     }
 
-    public function destroy(Room $room)
+    public function destroy($id)
     {
+        $room=Room::findOrFail($id);
         $room->delete();
         return $this->respondNoContent();
     }
