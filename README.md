@@ -5,7 +5,7 @@
 </p>
 <h3 align="center">Hotel Motel</h3>
 <p align="center">
-  This project is a hotel reservation project.
+  This project is server-side of a hotel reservation project.
 </p>
 
 # project structure
