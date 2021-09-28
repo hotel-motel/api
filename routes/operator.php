@@ -15,6 +15,7 @@ Route::group(['prefix'=>'operator', 'middleware'=>['auth:api', 'role:operator']]
         });
     });
     Route::group(['middleware'=>'operatorHasAccessRoom'],  function(){
-        Route::apiResource('rooms', RoomController::class)->only('show', 'update', 'destroy');
+        Route::post('rooms/{room}/edit', [RoomController::class, 'update']);
+        Route::apiResource('rooms', RoomController::class)->only('show', 'destroy');
     });
 });

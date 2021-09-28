@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Operator;
 
+use App\Http\Requests\EditRoom;
 use App\Models\Hotel;
 use App\Models\Room;
 use Illuminate\Http\Request;
@@ -29,9 +30,14 @@ class RoomController extends Controller
         return $this->respond($room->load(['hotel', 'trips.passengers']));
     }
 
-    public function update(Request $request, Room $room)
+    public function update(EditRoom $request, $id)
     {
-        // TODO
+        $room=Room::findOrFail($id);
+        $room->update([
+            'price'=>$request->price,
+            'max_capacity'=>$request->capacity
+        ]);
+        return $this->respondNoContent();
     }
 
     public function destroy($id)
