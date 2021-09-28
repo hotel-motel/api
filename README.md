@@ -38,7 +38,8 @@ This project is a hotel reservation project, which you can reserve a hotel in Ir
     
 - ## Database structure 
 
-  (image of database model)
+  ![database_struct](https://user-images.githubusercontent.com/30191548/135037522-5f964bf3-8669-4a71-adee-919cc11661cb.png)
+
 
 ## Security Vulnerabilities
 
