@@ -1,7 +1,12 @@
-
-## About Project
-
-This project is a hotel reservation project, which you can reserve a hotel in Iran.
+<p align="center">
+  <a href="https://getbootstrap.com/">
+    <img src="https://user-images.githubusercontent.com/30191548/135165218-05c4655c-81e1-4ae5-896e-41cabfd1e7f2.jpg" alt="Bootstrap logo" width="240" height="240">
+  </a>
+</p>
+<h3 align="center">Hotel Motel</h3>
+<p align="center">
+  This project is a hotel reservation project.
+</p>
 
 # project structure
 
