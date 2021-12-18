@@ -1,11 +1,11 @@
 <p align="center">
-  <a href="https://getbootstrap.com/">
-    <img src="https://user-images.githubusercontent.com/30191548/135165218-05c4655c-81e1-4ae5-896e-41cabfd1e7f2.jpg" alt="Bootstrap logo" width="240" height="240">
-  </a>
+    <kbd>
+        <img src="https://user-images.githubusercontent.com/30191548/135165218-05c4655c-81e1-4ae5-896e-41cabfd1e7f2.jpg" alt="Hotel Motel logo" width="240" height="240">
+    </kbd>
 </p>
 <h3 align="center">Hotel Motel API</h3>
 <p align="center">
-  This project is server-side of a hotel reservation project.
+    Server-side of a hotel reservation application.
 </p>
 
 ## Documentation
