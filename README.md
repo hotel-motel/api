@@ -10,13 +10,6 @@
 
 # project structure
 
-- ## Tools used
-<ul> 
-    <li><a href="https://laravel.com">Laravel</a> for server-side implementation.</li>
-    <li><a href="https://redis.io/">Redis</a> for caching and queuing.</li>
-</ul>
-
-
 - ## User types
     - Customer
     - Hotel Admin
