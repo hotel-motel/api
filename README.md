@@ -13,19 +13,6 @@
 - ## User types
     - Customer
     - Hotel Admin
-    
-- ## Database structure 
-
-  ![database_struct](https://user-images.githubusercontent.com/30191548/135037522-5f964bf3-8669-4a71-adee-919cc11661cb.png)
-
-
-## Requirements(development) :
-
-**1.** fill dataBase with fake data:
- 
-```shell script
-  php artisan db:seed
-```
 
 ## Run Server(development) :
 
