@@ -25,4 +25,4 @@ If you discover a security vulnerability within this project, please send an e-m
 
 ## License
 
-This project is licensed under the [MIT](https://opensource.org/licenses/MIT).
+This HotelMotel is licensed under the [MIT](https://opensource.org/licenses/MIT).
