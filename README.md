@@ -18,6 +18,10 @@
 
 Please refer to our extensive [Wiki documentation](https://github.com/hotel-motel/api/wiki) for more information.
 
+## License
+
+This package is licensed under the [MIT](https://opensource.org/licenses/MIT).
+
 ## Security Vulnerabilities
 
 If you discover a security vulnerability within this project, please send an e-mail to Omid Reza Heidari via [omid77.orh@gmail.com](mailto:omid77.orh@gmail.com). All security vulnerabilities will be promptly addressed.
