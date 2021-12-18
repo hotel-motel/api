@@ -3,16 +3,10 @@
     <img src="https://user-images.githubusercontent.com/30191548/135165218-05c4655c-81e1-4ae5-896e-41cabfd1e7f2.jpg" alt="Bootstrap logo" width="240" height="240">
   </a>
 </p>
-<h3 align="center">Hotel Motel</h3>
+<h3 align="center">Hotel Motel API</h3>
 <p align="center">
   This project is server-side of a hotel reservation project.
 </p>
-
-# project structure
-
-- ## User types
-    - Customer
-    - Hotel Admin
 
 ## Documentation
 
