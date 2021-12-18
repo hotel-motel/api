@@ -14,22 +14,6 @@
     - Customer
     - Hotel Admin
 
-## Run Server(development) :
-
-**1.** Start redis server
-
-**2.** Start Queue listening with below command:
-
-```shell script
-  php artisan queue:listen
-```
-
-**3.** Run server with below command :
-```shell script
-  php artisan serve
-```
-
-
 ## Security Vulnerabilities
 
 If you discover a security vulnerability within this project, please send an e-mail to Omid Reza Heidari via [omid77.orh@gmail.com](mailto:omid77.orh@gmail.com). All security vulnerabilities will be promptly addressed.
